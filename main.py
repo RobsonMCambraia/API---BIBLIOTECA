@@ -31,4 +31,11 @@ def postFunc():
     dict_func.append(novo_func)
     return jsonify(dict_func) 
 
+@app.route('/funcionarios/<int:id>', methods=['DELETE'])
+def deleteFunc(id):
+    for indice, funcionario in enumerate(dict_func):
+        if funcionario.get('ID RH') == id:
+            del dict_func[indice]
+    return jsonify(dict_func)
+
 app.run(port=5000, host='localhost', debug=True)
